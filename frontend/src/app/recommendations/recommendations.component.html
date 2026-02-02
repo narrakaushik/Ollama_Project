@@ -1,0 +1,39 @@
+<div class="recs-container">
+  <div class="header">
+    <h3>Smart Recommendations</h3>
+    <small>Embedding-based similarity search</small>
+  </div>
+
+  <div class="controls">
+    <div class="tabs">
+      <button [class.active]="mode === 'product'" (click)="mode = 'product'">By Product</button>
+      <button [class.active]="mode === 'text'" (click)="mode = 'text'">By Preference</button>
+    </div>
+
+    <div class="inputs" *ngIf="mode === 'product'">
+      <select [(ngModel)]="selectedProductId" (change)="getRecs()">
+        <option value="" disabled selected>Select a product to find similar items</option>
+        <option *ngFor="let p of products" [value]="p._id">{{ p.name }}</option>
+      </select>
+    </div>
+
+    <div class="inputs" *ngIf="mode === 'text'">
+      <input [(ngModel)]="userPrefText" placeholder="e.g., 'I need something for coding'" (keyup.enter)="getRecs()">
+      <button class="action-btn" (click)="getRecs()">Find</button>
+    </div>
+  </div>
+
+  <div class="results">
+    <div *ngFor="let item of recommendations" class="product-card">
+      <div class="score">{{ (item.score * 100).toFixed(1) }}% Match</div>
+      <h4>{{ item.product.name }}</h4>
+      <p>{{ item.product.description }}</p>
+      <span class="price">${{ item.product.price }}</span>
+      <span class="category">{{ item.product.category }}</span>
+    </div>
+    
+    <div *ngIf="recommendations.length === 0" class="empty-state">
+      <p>Select options to see recommendations</p>
+    </div>
+  </div>
+</div>

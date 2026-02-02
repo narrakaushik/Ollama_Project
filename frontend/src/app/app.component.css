@@ -1,0 +1,76 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 32px;
+    color: #4f46e5;
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+nav button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #4b5563;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+nav button.active {
+    background: #e0e7ff;
+    color: #4f46e5;
+    font-weight: 500;
+}
+
+.bottom-actions {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+}
+
+.secondary {
+    width: 100%;
+    background: white;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.secondary:hover {
+    background: #f9fafb;
+}
+
+.content {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+}

@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Product Manager</h2>
+
+  <!-- Form -->
+  <div class="card p-3 mb-4">
+    <h3>{{ editingId ? 'Edit Product' : 'Add New Product' }}</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-2">
+        <label>Name</label>
+        <input class="form-control" [(ngModel)]="productForm.name" name="name" required>
+      </div>
+      <div class="mb-2">
+        <label>Description (Used for AI Embeddings)</label>
+        <textarea class="form-control" [(ngModel)]="productForm.description" name="description" required></textarea>
+      </div>
+      <div class="mb-2">
+        <label>Price</label>
+        <input type="number" class="form-control" [(ngModel)]="productForm.price" name="price" required>
+      </div>
+      <div class="mb-2">
+        <label>Category</label>
+        <input class="form-control" [(ngModel)]="productForm.category" name="category" required>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ editingId ? 'Update' : 'Create' }}</button>
+      <button type="button" class="btn btn-secondary ms-2" *ngIf="editingId" (click)="resetForm()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- List -->
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let p of products">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{p.name}}</h5>
+          <p class="card-text">{{p.description}}</p>
+          <p class="text-muted">${{p.price}} - {{p.category}}</p>
+          <button class="btn btn-sm btn-warning me-2" (click)="editProduct(p)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(p._id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="chat-container">
+  <div class="header">
+    <h3>Chat with your Database</h3>
+    <small>RAG powered by Gemma 3</small>
+  </div>
+  
+  <div class="messages">
+    <div *ngFor="let msg of messages" [class.user]="msg.sender === 'user'" [class.ai]="msg.sender === 'ai'" class="message">
+      <div class="content">{{ msg.text }}</div>
+    </div>
+    <div *ngIf="loading" class="message ai loading">
+      <div class="content">Thinking...</div>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Ask about products..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>

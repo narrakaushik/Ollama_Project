@@ -1,0 +1,20 @@
+<div class="app-container">
+  <div class="sidebar">
+    <h2>AI Shop</h2>
+    <nav>
+      <button [class.active]="view === 'chat'" (click)="view = 'chat'">Chat with Database</button>
+      <button [class.active]="view === 'recs'" (click)="view = 'recs'">Recommendations</button>
+      <button [class.active]="view === 'manage'" (click)="view = 'manage'">Manage Products</button>
+    </nav>
+    <div class="bottom-actions">
+      <button class="secondary" (click)="seed()">Seed Data</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <app-chat *ngIf="view === 'chat'"></app-chat>
+
+    <app-recommendations *ngIf="view === 'recs'"></app-recommendations>
+    <app-product-manager *ngIf="view === 'manage'"></app-product-manager>
+  </div>
+</div>

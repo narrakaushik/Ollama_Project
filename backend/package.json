@@ -1,0 +1,21 @@
+{
+  "name": "ollama-project-backend",
+  "version": "1.0.0",
+  "description": "Backend for AI RAG and Recommendation System",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "index": "node scripts/indexer.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
